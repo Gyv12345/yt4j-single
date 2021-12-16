@@ -18,7 +18,6 @@ import org.springframework.cache.annotation.EnableCaching;
 /**
  * @author gyv12345@163.com
  */
-@EnableCaching
 @EnableYt4jSecurity
 @SpringBootApplication
 public class SysApplication {

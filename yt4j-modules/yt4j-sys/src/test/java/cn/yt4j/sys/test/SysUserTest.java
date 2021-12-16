@@ -39,13 +39,10 @@ public class SysUserTest {
 	@Test
 	public void login() throws Exception {
 		UserDTO dto = new UserDTO();
-		RSA rsa1 = new RSA(null,
-				"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCaM2N1vMupralzJItx3Y4AftJVh78I8LNuUGuKqMF1YHiwYBHrvZXpzEuRmtTArSaPOlywVt2obC2Ft8ruIDw7Xfpt5SiY1Y7aCONT/DRGGsUEal6jGgTzxiUKTyfyF4wr+0vd7IeiTD/iqg4Oqm3+WsKm7ZWozUG6scG5798YqwIDAQAB");
-		String password = rsa1.encryptBase64("123456", KeyType.PublicKey);
 		dto.setUsername("admin");
-		dto.setPassword(password);
+		dto.setPassword("123456");
 		MvcResult result = mvc
-				.perform(post("/sys/user/login").content(objectMapper.writeValueAsString(dto))
+				.perform(post("/user/login").content(objectMapper.writeValueAsString(dto))
 						.contentType(MediaType.APPLICATION_JSON))
 				.andExpect(jsonPath("$.status").value("200")).andReturn();
 		String content = result.getResponse().getContentAsString();
@@ -58,9 +55,9 @@ public class SysUserTest {
 
 		user.setUsername("test1989");
 		user.setPassword("123456");
-		String url = "/sys/user/insert";
-		mvc.perform(post(url).header("Access-Token",
-				"eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJ5dDRqLmNuIiwic3ViIjoiYWRtaW4iLCJhdWQiOiJ2aXAiLCJleHAiOjE2MDc3OTI1MTksIm5iZiI6MTYwNjg5MDQ0MSwiaWF0IjoxNjA2ODkxMzQxfQ.oQosW7f0AovH5MDDQBi2xn6FxJJkYxsODKSJglvs4gW0l0PXaEBBkCQJfFUfnYwGbQOCXzvU4rUO4tTPO0DMKQ")
+		String url = "/user/insert";
+		mvc.perform(post(url).header("Authorization",
+				"Bearer eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJ5dDRqLmNuIiwic3ViIjoiYWRtaW4iLCJhdWQiOiJ2aXAiLCJleHAiOjE2NDA1MjY1MDIsIm5iZiI6MTYzOTYyNDQyNSwiaWF0IjoxNjM5NjI1MzI1fQ._6V08dcYzAuQjsQAfhf364IRHGQZBE1dSzOCPf6lLkdeGw01mvDEpPBwUhHaBqD1")
 				.content(objectMapper.writeValueAsString(user)).contentType(MediaType.APPLICATION_JSON))
 				.andExpect(jsonPath("$.status").value("200"));
 	}

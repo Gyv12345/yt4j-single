@@ -33,7 +33,7 @@
         <xxl-job.version>2.3.0</xxl-job.version>
         <netty.websocket.version>0.12.0</netty.websocket.version>
         <rocketmq-spring-boot-starter-version>2.2.0</rocketmq-spring-boot-starter-version>
-        <jetcache.latest.version>2.6.0</jetcache.latest.version>
+        <jetcache.latest.version>2.6.1</jetcache.latest.version>
     </properties>
 
     <dependencyManagement>

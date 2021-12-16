@@ -67,20 +67,20 @@ public class SysTest {
 	 */
 	@Test
 	public void rsa() {
-
-		RSA rsa = new RSA();
-
-		// 获得私钥
-		rsa.getPrivateKeyBase64();
-		System.out.println(rsa.getPrivateKeyBase64());
-		// 获得公钥
-		System.out.println(rsa.getPublicKeyBase64());
-		rsa.getPublicKeyBase64();
-
-		RSA rsa1 = new RSA(null,
-				"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCaM2N1vMupralzJItx3Y4AftJVh78I8LNuUGuKqMF1YHiwYBHrvZXpzEuRmtTArSaPOlywVt2obC2Ft8ruIDw7Xfpt5SiY1Y7aCONT/DRGGsUEal6jGgTzxiUKTyfyF4wr+0vd7IeiTD/iqg4Oqm3+WsKm7ZWozUG6scG5798YqwIDAQAB");
-		String mima = rsa1.encryptBcd("123456", KeyType.PublicKey);
-		System.out.println(mima);
+//
+//		RSA rsa = new RSA();
+//
+//		// 获得私钥
+//		rsa.getPrivateKeyBase64();
+//		System.out.println(rsa.getPrivateKeyBase64());
+//		// 获得公钥
+//		System.out.println(rsa.getPublicKeyBase64());
+//		rsa.getPublicKeyBase64();
+//
+//		RSA rsa1 = new RSA(null,
+//				"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCaM2N1vMupralzJItx3Y4AftJVh78I8LNuUGuKqMF1YHiwYBHrvZXpzEuRmtTArSaPOlywVt2obC2Ft8ruIDw7Xfpt5SiY1Y7aCONT/DRGGsUEal6jGgTzxiUKTyfyF4wr+0vd7IeiTD/iqg4Oqm3+WsKm7ZWozUG6scG5798YqwIDAQAB");
+//		String mima = rsa1.encryptBcd("123456", KeyType.PublicKey);
+//		System.out.println(mima);
 
 		//// 公钥加密，私钥解密
 		// byte[] encrypt = rsa.encrypt(StrUtil.bytes("我是一段测试aaaa",

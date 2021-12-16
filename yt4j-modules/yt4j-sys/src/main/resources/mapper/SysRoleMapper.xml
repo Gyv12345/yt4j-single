@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~    Copyright (c) [2020] [yang1989]
+  ~    [yt4j] is licensed under Mulan PSL v2.
+  ~    You can use this software according to the terms and conditions of the Mulan PSL v2.
+  ~    You may obtain a copy of Mulan PSL v2 at:
+  ~             http://license.coscl.org.cn/MulanPSL2
+  ~    THIS SOFTWARE IS PROVIDED ON AN "AS IS" BASIS, WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO NON-INFRINGEMENT, MERCHANTABILITY OR FIT FOR A PARTICULAR PURPOSE.
+  ~    See the Mulan PSL v2 for more details.
+  -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yt4j.sys.dao.SysRoleDao">
+
+    <resultMap type="cn.yt4j.sys.entity.SysRole" id="SysRoleMap">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="code" column="code"/>
+        <result property="level" column="level"/>
+        <result property="state" column="state"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+    <select id="listByUserId" resultType="java.lang.String">
+        select t1.code from sys_role t1
+        inner join sys_user_role t2 on t1.id = t2.role_id
+        where t2.user_id=#{id}
+    </select>
+</mapper>

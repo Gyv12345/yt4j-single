@@ -1,0 +1,31 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://127.0.0.1:3306/yt4j?useSSL=false&serverTimezone=Asia/Shanghai&characterEncoding=utf-8&autoReconnect=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    host: 127.0.0.1
+    password: 123456
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+yt4j:
+  jwt:
+    filter:
+      ignoredUrl:
+        - /doc.html
+        - /swagger-ui.html
+        - /swagger-resources/**
+        - /swagger/**
+        - /**/v2/api-docs
+        - /**/*.js
+        - /**/*.css
+        - /**/*.png
+        - /**/*.ico
+        - /webjars/springfox-swagger-ui/**
+        - /user/login
+  swagger:
+    enabled: true

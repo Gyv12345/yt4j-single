@@ -19,7 +19,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
@@ -52,6 +51,5 @@ public class SysDictItem extends Model<SysDictItem> {
 
 	@ApiModelProperty(value = "修改时间", example = "1")
 	private LocalDateTime updateTime;
-
 
 }

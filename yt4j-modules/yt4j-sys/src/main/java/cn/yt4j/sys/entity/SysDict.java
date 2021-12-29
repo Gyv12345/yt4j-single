@@ -21,7 +21,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -78,6 +77,5 @@ public class SysDict extends Model<SysDict> {
 	@ApiModelProperty(hidden = true)
 	@TableField(exist = false)
 	private List<SysDictItem> items;
-
 
 }

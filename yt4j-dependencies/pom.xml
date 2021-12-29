@@ -119,11 +119,6 @@
                 <artifactId>rocketmq-spring-boot-starter</artifactId>
                 <version>${rocketmq-spring-boot-starter-version}</version>
             </dependency>
-            <dependency>
-                <groupId>com.alicp.jetcache</groupId>
-                <artifactId>jetcache-starter-redis</artifactId>
-                <version>${jetcache.latest.version}</version>
-            </dependency>
 
             <!-- 2方库 -->
             <dependency>

@@ -23,9 +23,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -87,6 +85,5 @@ public class SysUser extends Model<SysUser> {
 	@ApiModelProperty(value = "角色Id")
 	@TableField(exist = false)
 	private List<Long> roleIds;
-
 
 }

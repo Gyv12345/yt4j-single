@@ -51,7 +51,7 @@ public class RuleWorkFlow extends AbstractWorkFlow {
 	@Override
 	public int execute(WorkContext context) {
 		int status = 0;
-		log.info("执行节点：[{}]",this.getName());
+		log.info("执行节点：[{}]", this.getName());
 		if (StringUtils.hasText(this.beanId)) {
 			Work work = SpringContextHolder.getBean(this.beanId);
 			status = work.execute(context);

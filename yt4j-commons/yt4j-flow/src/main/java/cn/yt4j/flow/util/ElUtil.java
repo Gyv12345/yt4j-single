@@ -27,7 +27,7 @@ public class ElUtil {
 	private static final String ALIAS = "data";
 
 	public static Boolean condition(WorkContext context, String expression) {
-		log.info("条件：[{}]",expression);
+		log.info("条件：[{}]", expression);
 		ExpressionParser parser = new SpelExpressionParser();
 
 		Expression ex = parser.parseExpression(expression);

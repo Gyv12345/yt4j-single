@@ -38,11 +38,12 @@ public class SwaggerAutoConfiguration {
 
 	@Bean
 	public Docket api() {
-		Docket docket= new Docket(DocumentationType.SWAGGER_2).apiInfo(ApiInfo.DEFAULT).select()
+		Docket docket = new Docket(DocumentationType.SWAGGER_2).apiInfo(ApiInfo.DEFAULT).select()
 				.apis(RequestHandlerSelectors.withClassAnnotation(Api.class)).paths(PathSelectors.any()).build();
 		List<RequestParameter> parameterList = new ArrayList<>();
-		RequestParameterBuilder parameterBuilder =new RequestParameterBuilder();
-		parameterList.add(parameterBuilder.name("Authorization").description("用户登录凭证").in(ParameterType.HEADER).required(false).build());
+		RequestParameterBuilder parameterBuilder = new RequestParameterBuilder();
+		parameterList.add(parameterBuilder.name("Authorization").description("用户登录凭证").in(ParameterType.HEADER)
+				.required(false).build());
 		docket.globalRequestParameters(parameterList);
 		return docket;
 	}

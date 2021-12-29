@@ -57,8 +57,8 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuDao, SysMenu> impleme
 
 	@Override
 	public List<MenuTreeVO> menuTree() {
-		return TreeUtil.buildByRecursive(
-				Optional.ofNullable(this.baseMapper.selectList(new QueryWrapper<>())).orElse(new ArrayList<>()).stream().map(sysMenu -> {
+		return TreeUtil.buildByRecursive(Optional.ofNullable(this.baseMapper.selectList(new QueryWrapper<>()))
+				.orElse(new ArrayList<>()).stream().map(sysMenu -> {
 					MenuTreeVO vo = new MenuTreeVO(sysMenu.getId(), sysMenu.getParentId(), sysMenu.getTitle(),
 							sysMenu.getTitle(), sysMenu.getIcon(), sysMenu.getOrderNo(), sysMenu.getPath(),
 							sysMenu.getComponent());

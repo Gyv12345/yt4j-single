@@ -51,7 +51,6 @@ public class SysUser extends Model<SysUser> {
 	@ApiModelProperty(value = "用户名")
 	private String username;
 
-	@JsonProperty
 	@ApiModelProperty(value = "密码")
 	private String password;
 

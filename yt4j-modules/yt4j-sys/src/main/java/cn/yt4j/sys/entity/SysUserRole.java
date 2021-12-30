@@ -22,7 +22,7 @@ import lombok.ToString;
  * @author gyv12345@163.com
  * @since 2020-08-10 08:44:10
  */
-@ApiModel(value = "SysUserRole对象", description = "")
+@ApiModel(value = "SysUserRole对象")
 @Getter
 @Setter
 @ToString

@@ -4,7 +4,7 @@ MAINTAINER shichenyang89
 
 ENV TZ=Asia/Shanghai
 
-ENV JAVA_OPTS="-Xms128m -Xmx128m -Djava.security.egd=file:/dev/./urandom"
+ENV JAVA_OPTS="-Xms128m -Xmx256m -Djava.security.egd=file:/dev/./urandom"
 
 RUN ln -sf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
@@ -16,4 +16,4 @@ EXPOSE 9100
 
 ADD ./target/yt4j-sys.jar ./
 
-CMD sleep 60;java $JAVA_OPTS -jar yt4j-sys.jar
+CMD java $JAVA_OPTS -jar yt4j-sys.jar

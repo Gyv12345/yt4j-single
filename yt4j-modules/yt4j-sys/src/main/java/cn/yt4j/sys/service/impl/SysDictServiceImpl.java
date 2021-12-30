@@ -38,7 +38,7 @@ public class SysDictServiceImpl extends ServiceImpl<SysDictDao, SysDict> impleme
 
 	@Override
 	public List<SysDictItem> listByCode(String code) {
-		return sysDictItemDao.selectList(Wrappers.<SysDictItem>lambdaQuery().eq(SysDictItem::getCode, code));
+		return this.sysDictItemDao.selectList(Wrappers.<SysDictItem>lambdaQuery().eq(SysDictItem::getCode, code));
 	}
 
 }

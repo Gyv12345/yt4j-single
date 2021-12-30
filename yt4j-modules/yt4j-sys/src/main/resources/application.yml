@@ -9,6 +9,9 @@ spring:
   redis:
     host: 127.0.0.1
     password: 123456
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

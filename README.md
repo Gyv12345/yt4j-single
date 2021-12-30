@@ -2,11 +2,9 @@
 
 ui部分前端还在开发
 
-[快速开始](doc/develop.md)
-
 <p>
- <img src="https://img.shields.io/badge/Yt4j-1.0.1-success.svg" alt="Build Status">
- <img src="https://img.shields.io/badge/spring%20boot-2.5.X-blue" alt="Coverage Status">
+ <img src="https://img.shields.io/badge/Yt4j-1.0.0-success.svg" alt="Build Status">
+ <img src="https://img.shields.io/badge/spring%20boot-2.6.X-blue" alt="Coverage Status">
 </p>
 
 
@@ -19,8 +17,8 @@ ui部分前端还在开发
 
 依赖 | 版本
 ---|---
-Spring Boot | 2.5.x
-Mybatis Plus | 3.4.3
+Spring Boot | 2.6.x
+Mybatis Plus | 3.4.x
 hutool | 5.7.x
 knife4j |  3.0.3
 

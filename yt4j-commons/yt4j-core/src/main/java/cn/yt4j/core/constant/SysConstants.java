@@ -8,25 +8,12 @@
  *    See the Mulan PSL v2 for more details.
  */
 
-package cn.yt4j.sys.entity.vo;
-
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
-import lombok.Data;
-
-import java.io.Serializable;
+package cn.yt4j.core.constant;
 
 /**
  * @author gyv12345@163.com
  */
-@Data
-public class DictVO implements Serializable {
+public interface SysConstants {
 
-	private static final long serialVersionUID = -7694822691794776892L;
-
-	private String label;
-
-	@JsonSerialize(using = ToStringSerializer.class)
-	private Object value;
-
+    Long PUBLIC_PARENT_ID=0L;
 }

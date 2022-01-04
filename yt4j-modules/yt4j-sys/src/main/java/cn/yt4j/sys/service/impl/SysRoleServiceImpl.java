@@ -57,7 +57,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleDao, SysRole> impleme
 		return this.list().stream().map(sysRole -> {
 			DictVO vo = new DictVO();
 			vo.setLabel(sysRole.getName());
-			vo.setValue(String.valueOf(sysRole.getId()));
+			vo.setValue(sysRole.getId());
 			return vo;
 		}).collect(Collectors.toList());
 	}

@@ -10,6 +10,7 @@
 
 package cn.yt4j.sys.service.impl;
 
+import cn.yt4j.core.constant.SysConstants;
 import cn.yt4j.core.util.TreeUtil;
 import cn.yt4j.security.util.SecurityUtil;
 import cn.yt4j.sys.dao.SysMenuDao;
@@ -57,10 +58,11 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuDao, SysMenu> impleme
 
 	@Override
 	public List<MenuTreeVO> menuTree() {
-		return TreeUtil.buildByRecursive(Optional.ofNullable(this.list())
-				.orElse(new ArrayList<>()).stream().map(sysMenu -> new MenuTreeVO(sysMenu.getId(), sysMenu.getParentId(), sysMenu.getTitle(),
+		return TreeUtil.buildByRecursive(Optional.ofNullable(this.list()).orElse(new ArrayList<>()).stream()
+				.map(sysMenu -> new MenuTreeVO(sysMenu.getId(), sysMenu.getParentId(), sysMenu.getTitle(),
 						sysMenu.getTitle(), sysMenu.getIcon(), sysMenu.getOrderNo(), sysMenu.getPath(),
-						sysMenu.getComponent())).collect(Collectors.toList()), 0L);
+						sysMenu.getComponent()))
+				.collect(Collectors.toList()), SysConstants.PUBLIC_PARENT_ID);
 	}
 
 	@Override

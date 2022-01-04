@@ -10,6 +10,7 @@
 
 package cn.yt4j.core.util;
 
+import cn.hutool.core.util.ObjectUtil;
 import cn.yt4j.core.domain.BaseTree;
 import lombok.experimental.UtilityClass;
 
@@ -32,7 +33,7 @@ public class TreeUtil {
 	public <T extends BaseTree> List<T> buildByRecursive(List<T> treeNodes, Object root) {
 		List<T> trees = new ArrayList<T>();
 		for (T treeNode : treeNodes) {
-			if (root.equals(treeNode.getParentId())) {
+			if (ObjectUtil.equal(root,treeNode.getParentId())) {
 				trees.add(findChildren(treeNode, treeNodes));
 			}
 		}
@@ -46,7 +47,7 @@ public class TreeUtil {
 	 */
 	public <T extends BaseTree> T findChildren(T treeNode, List<T> treeNodes) {
 		for (T it : treeNodes) {
-			if (treeNode.getId().equals(it.getParentId())) {
+			if (ObjectUtil.equal(treeNode.getId(),it.getParentId())) {
 				if (treeNode.getChildren() == null) {
 					treeNode.setChildren(new ArrayList<>());
 				}

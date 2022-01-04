@@ -10,6 +10,7 @@
 
 package cn.yt4j.sys.service.impl;
 
+import cn.yt4j.core.constant.SysConstants;
 import cn.yt4j.core.domain.BaseTree;
 import cn.yt4j.core.util.TreeUtil;
 import cn.yt4j.sys.dao.SysDeptDao;
@@ -34,14 +35,9 @@ public class SysDeptServiceImpl extends ServiceImpl<SysDeptDao, SysDept> impleme
 
 	@Override
 	public List<BaseTree> treeDept() {
-		return TreeUtil
-				.buildByRecursive(Optional.ofNullable(this.list()).orElse(new ArrayList<>()).stream().map(sysDept -> {
-					BaseTree tree = new BaseTree();
-					tree.setId(sysDept.getId());
-					tree.setParentId(sysDept.getParentId());
-					tree.setName(sysDept.getLabel());
-					return tree;
-				}).collect(Collectors.toList()), 0L);
+		return TreeUtil.buildByRecursive(Optional.ofNullable(this.list()).orElse(new ArrayList<>()).stream()
+				.map(sysDept -> new BaseTree(sysDept.getId(), sysDept.getParentId(), sysDept.getLabel()))
+				.collect(Collectors.toList()), SysConstants.PUBLIC_PARENT_ID);
 	}
 
 }

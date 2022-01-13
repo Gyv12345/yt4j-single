@@ -10,13 +10,13 @@
 
 package cn.yt4j.sys.controller;
 
-import cn.hutool.crypto.asymmetric.KeyType;
-import cn.hutool.crypto.asymmetric.RSA;
+import cn.yt4j.core.domain.PageRequest;
 import cn.yt4j.core.domain.PageResult;
 import cn.yt4j.core.domain.R;
 import cn.yt4j.core.util.PageUtil;
 import cn.yt4j.log.annotation.SysLog;
 import cn.yt4j.security.util.SecurityUtil;
+import cn.yt4j.sys.entity.SysDict;
 import cn.yt4j.sys.entity.SysUser;
 import cn.yt4j.sys.entity.dto.PasswordDTO;
 import cn.yt4j.sys.entity.dto.UserDTO;
@@ -76,13 +76,13 @@ public class SysUserController {
 
 	/**
 	 * 分页查询所有数据
-	 * @param sysUser 查询实体
+	 * @param request 查询实体
 	 * @return 所有数据
 	 */
 	@ApiOperation("列表 ")
-	@GetMapping("list")
-	public R<PageResult<SysUser>> selectAll(SysUser sysUser) {
-		return R.ok(this.sysUserService.page(PageUtil.page(), new QueryWrapper<>(sysUser)));
+	@PostMapping("page")
+	public R<PageResult<SysUser>> listPage(@Valid @RequestBody PageRequest<SysUser> request) {
+		return R.ok(this.sysUserService.page(request.page(),request.wrapper()));
 	}
 
 	/**

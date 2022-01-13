@@ -10,9 +10,11 @@
 
 package cn.yt4j.sys.controller;
 
+import cn.yt4j.core.domain.PageRequest;
 import cn.yt4j.core.domain.PageResult;
 import cn.yt4j.core.domain.R;
 import cn.yt4j.core.util.PageUtil;
+import cn.yt4j.sys.entity.SysDict;
 import cn.yt4j.sys.entity.SysRole;
 import cn.yt4j.sys.entity.dto.RoleMenuDTO;
 import cn.yt4j.sys.entity.vo.DictVO;
@@ -23,6 +25,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.io.Serializable;
 import java.util.List;
 
@@ -63,13 +66,13 @@ public class SysRoleController {
 
 	/**
 	 * 分页查询所有数据
-	 * @param sysRole 查询实体
+	 * @param request 查询实体
 	 * @return 所有数据
 	 */
 	@ApiOperation("分页查询")
-	@GetMapping("list")
-	public R<PageResult<SysRole>> selectAll(SysRole sysRole) {
-		return R.ok(this.sysRoleService.page(PageUtil.page(), new QueryWrapper<>(sysRole)));
+	@PostMapping("page")
+	public R<PageResult<SysRole>> listPage(@Valid @RequestBody PageRequest<SysRole> request) {
+		return R.ok(this.sysRoleService.page(request.page(),request.wrapper()));
 	}
 
 	/**

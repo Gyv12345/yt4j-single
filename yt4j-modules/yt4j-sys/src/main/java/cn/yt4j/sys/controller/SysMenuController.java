@@ -10,10 +10,12 @@
 
 package cn.yt4j.sys.controller;
 
+import cn.yt4j.core.domain.PageRequest;
 import cn.yt4j.core.domain.PageResult;
 import cn.yt4j.core.domain.R;
 import cn.yt4j.core.util.PageUtil;
 import cn.yt4j.security.util.SecurityUtil;
+import cn.yt4j.sys.entity.SysDict;
 import cn.yt4j.sys.entity.SysMenu;
 import cn.yt4j.sys.entity.vo.MenuTreeVO;
 import cn.yt4j.sys.entity.vo.Route;
@@ -25,6 +27,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.io.Serializable;
 import java.util.List;
 
@@ -73,13 +76,13 @@ public class SysMenuController {
 
 	/**
 	 * 分页查询所有数据
-	 * @param sysMenu 查询实体
+	 * @param request 查询实体
 	 * @return 所有数据
 	 */
 	@ApiOperation("分页查询")
-	@GetMapping("list")
-	public R<PageResult<SysMenu>> selectAll(SysMenu sysMenu) {
-		return R.ok(this.sysMenuService.page(PageUtil.page(), new QueryWrapper<>(sysMenu)));
+	@PostMapping("page")
+	public R<PageResult<SysMenu>> listPage(@Valid @RequestBody PageRequest<SysMenu> request) {
+		return R.ok(this.sysMenuService.page(request.page(), request.wrapper()));
 	}
 
 	/**

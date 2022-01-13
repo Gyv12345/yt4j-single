@@ -11,11 +11,13 @@
 package cn.yt4j.sys.controller;
 
 import cn.yt4j.core.domain.BaseTree;
+import cn.yt4j.core.domain.PageRequest;
 import cn.yt4j.core.domain.PageResult;
 import cn.yt4j.core.domain.R;
 import cn.yt4j.core.util.PageUtil;
 import cn.yt4j.log.annotation.SysLog;
 import cn.yt4j.sys.entity.SysDept;
+import cn.yt4j.sys.entity.SysDict;
 import cn.yt4j.sys.service.SysDeptService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import io.swagger.annotations.Api;
@@ -24,6 +26,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.io.Serializable;
 import java.util.List;
 
@@ -58,14 +61,14 @@ public class SysDeptController {
 
 	/**
 	 * 分页查询所有数据d
-	 * @param sysDept 查询实体
+	 * @param request 查询实体
 	 * @return 所有数据
 	 */
 	@SysLog("部门分页查询")
 	@ApiOperation("分页查询")
-	@PostMapping("selectAll")
-	public R<PageResult<SysDept>> selectAll(@RequestBody SysDept sysDept) {
-		return R.ok(this.sysDeptService.page(PageUtil.page(), new QueryWrapper<>(sysDept)));
+	@PostMapping("page")
+	public R<PageResult<SysDept>> listPage(@Valid @RequestBody PageRequest<SysDept> request) {
+		return R.ok(this.sysDeptService.page(request.page(), request.wrapper()));
 	}
 
 	/**

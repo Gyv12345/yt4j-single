@@ -10,9 +10,11 @@
 
 package cn.yt4j.sys.controller;
 
+import cn.yt4j.core.domain.PageRequest;
 import cn.yt4j.core.domain.PageResult;
 import cn.yt4j.core.domain.R;
 import cn.yt4j.core.util.PageUtil;
+import cn.yt4j.sys.entity.SysDict;
 import cn.yt4j.sys.entity.SysDictItem;
 import cn.yt4j.sys.service.SysDictItemService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -21,6 +23,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.io.Serializable;
 import java.util.List;
 
@@ -43,13 +46,13 @@ public class SysDictItemController {
 
 	/**
 	 * 分页查询所有数据
-	 * @param sysDictItem 查询实体
+	 * @param request 查询实体
 	 * @return 所有数据
 	 */
 	@ApiOperation("分页查询")
-	@GetMapping
-	public R<PageResult<SysDictItem>> selectAll(SysDictItem sysDictItem) {
-		return R.ok(this.sysDictItemService.page(PageUtil.page(), new QueryWrapper<>(sysDictItem)));
+	@PostMapping("page")
+	public R<PageResult<SysDictItem>> listPage(@Valid @RequestBody PageRequest<SysDictItem> request) {
+		return R.ok(this.sysDictItemService.page(request.page(), request.wrapper()));
 	}
 
 	/**

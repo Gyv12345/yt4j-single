@@ -10,6 +10,7 @@
 
 package cn.yt4j.sys.controller;
 
+import cn.yt4j.core.domain.PageRequest;
 import cn.yt4j.core.domain.PageResult;
 import cn.yt4j.core.domain.R;
 import cn.yt4j.core.util.PageUtil;
@@ -23,6 +24,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.io.Serializable;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -57,14 +59,14 @@ public class SysDictController {
 	}
 
 	/**
-	 * 分页查询所有数据
-	 * @param sysDict 查询实体
-	 * @return 所有数据
+	 * 分页查询
+	 * @param request
+	 * @return
 	 */
 	@ApiOperation("分页查询")
-	@GetMapping
-	public R<PageResult<SysDict>> selectAll(SysDict sysDict) {
-		return R.ok(this.sysDictService.page(PageUtil.page(), new QueryWrapper<>(sysDict)));
+	@PostMapping("page")
+	public R<PageResult<SysDict>> listPage(@Valid @RequestBody PageRequest<SysDict> request) {
+		return R.ok(this.sysDictService.page(request.page(), request.wrapper()));
 	}
 
 	/**
@@ -74,7 +76,7 @@ public class SysDictController {
 	 */
 	@ApiOperation("获取单个")
 	@GetMapping("{id}")
-	public R<SysDict> selectOne(@PathVariable Serializable id) {
+	public R<SysDict> one(@PathVariable Serializable id) {
 		return R.ok(this.sysDictService.getById(id));
 	}
 

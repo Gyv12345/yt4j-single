@@ -79,7 +79,7 @@ public class SysUserController {
 	@ApiOperation("列表 ")
 	@PostMapping("page")
 	public R<PageResult<SysUser>> listPage(@Valid @RequestBody PageRequest<SysUser> request) {
-		return R.ok(this.sysUserService.page(request.page(),request.wrapper()));
+		return R.ok(this.sysUserService.page(request.page(), request.wrapper()));
 	}
 
 	/**

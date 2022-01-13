@@ -69,7 +69,7 @@ public class SysRoleController {
 	@ApiOperation("分页查询")
 	@PostMapping("page")
 	public R<PageResult<SysRole>> listPage(@Valid @RequestBody PageRequest<SysRole> request) {
-		return R.ok(this.sysRoleService.page(request.page(),request.wrapper()));
+		return R.ok(this.sysRoleService.page(request.page(), request.wrapper()));
 	}
 
 	/**

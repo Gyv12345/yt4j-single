@@ -15,5 +15,6 @@ package cn.yt4j.core.constant;
  */
 public interface SysConstants {
 
-    Long PUBLIC_PARENT_ID=0L;
+	Long PUBLIC_PARENT_ID = 0L;
+
 }

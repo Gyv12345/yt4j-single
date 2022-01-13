@@ -28,34 +28,35 @@ import java.util.Map;
 @Data
 public class PageRequest<T> implements Serializable {
 
-    private static final long serialVersionUID = -2788877367261112273L;
+	private static final long serialVersionUID = -2788877367261112273L;
 
-    /**
-     * 第几页
-     */
-    @NotNull
-    private Long pageNo;
+	/**
+	 * 第几页
+	 */
+	@NotNull
+	private Long pageNo;
 
-    /**
-     * 每页条数
-     */
-    @NotNull
-    private Long pageSize;
+	/**
+	 * 每页条数
+	 */
+	@NotNull
+	private Long pageSize;
 
-    /**
-     * 查询条件
-     */
-    private Map<String, Object> condition;
+	/**
+	 * 查询条件
+	 */
+	private Map<String, Object> condition;
 
-    public IPage<T> page(){
-        Page<T> page=new Page<>(this.pageNo,this.pageSize);
-        return page;
-    }
+	public IPage<T> page() {
+		Page<T> page = new Page<>(this.pageNo, this.pageSize);
+		return page;
+	}
 
-    public Wrapper wrapper(){
-        if (MapUtil.isEmpty(this.condition)){
-            return new QueryWrapper();
-        }
-        return SearchUtil.parseWhereSql(this.condition);
-    }
+	public Wrapper wrapper() {
+		if (MapUtil.isEmpty(this.condition)) {
+			return new QueryWrapper();
+		}
+		return SearchUtil.parseWhereSql(this.condition);
+	}
+
 }

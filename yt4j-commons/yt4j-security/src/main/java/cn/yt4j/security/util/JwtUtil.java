@@ -29,12 +29,11 @@ import java.util.Date;
 @RequiredArgsConstructor
 @Component
 @Slf4j
-public class JwtUtil {
-
-	private final JwtPayloadProperty jwtPayloadProperty;
+public record JwtUtil(JwtPayloadProperty jwtPayloadProperty) {
 
 	/**
 	 * 从令牌中获取数据声明
+	 *
 	 * @param token 令牌
 	 * @return 数据声明
 	 */
@@ -45,6 +44,7 @@ public class JwtUtil {
 
 	/**
 	 * 从令牌中获取认证的唯一标识
+	 *
 	 * @param token 令牌
 	 * @return 用户id
 	 */
@@ -53,8 +53,7 @@ public class JwtUtil {
 		try {
 			Claims claims = getClaimsFromToken(token);
 			username = claims.getSubject();
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			log.error("{}", e);
 			username = null;
 		}
@@ -63,6 +62,7 @@ public class JwtUtil {
 
 	/**
 	 * 验证令牌是否时间有效
+	 *
 	 * @param token 令牌
 	 * @return 是否有效
 	 */
@@ -72,8 +72,7 @@ public class JwtUtil {
 			Date expiration = claims.getExpiration();
 			Date notBefore = claims.getNotBefore();
 			return new Date().after(notBefore) && new Date().before(expiration);
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			log.error("{}", e);
 			return false;
 		}
@@ -81,6 +80,7 @@ public class JwtUtil {
 
 	/**
 	 * 生成令牌
+	 *
 	 * @param username .
 	 * @return .
 	 */

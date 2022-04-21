@@ -30,5 +30,7 @@ yt4j:
         - /**/*.ico
         - /webjars/springfox-swagger-ui/**
         - /user/login
+      tokenHead: ''
   swagger:
     enabled: true
+

@@ -13,7 +13,6 @@ package cn.yt4j.security.service;
 import cn.yt4j.core.constant.SecurityConstants;
 import cn.yt4j.security.model.UserCache;
 import cn.yt4j.security.model.Yt4jUser;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.core.GrantedAuthority;
@@ -39,15 +38,11 @@ public class Yt4jUserDetailServiceImpl implements UserDetailsService {
 	public UserDetails loadUserByUsername(String s) {
 		if (redisTemplate.hasKey(SecurityConstants.SECURITY_PREFIX + s)) {
 			UserCache vo = redisTemplate.opsForValue().get(SecurityConstants.SECURITY_PREFIX + s);
-
 			List<GrantedAuthority> authorities = new ArrayList<>();
-
 			authorities.addAll(
 					vo.getRoles().stream().map(item -> new SimpleGrantedAuthority(item)).collect(Collectors.toList()));
-
 			authorities.addAll(
 					vo.getMenus().stream().map(item -> new SimpleGrantedAuthority(item)).collect(Collectors.toList()));
-
 			Yt4jUser user = new Yt4jUser(vo.getUsername(), vo.getPassword(), authorities, vo.getId());
 			return user;
 		}

@@ -22,18 +22,18 @@ public enum MessageStatus implements IMessageStatus {
 					"添加成功"), ADD_FAILED(500, "添加失败"), UPDATE_SUCCESS(200, "修改成功"), UPDATE_FAILED(500,
 							"修改失败"), DELETE_SUCCESS(200, "删除成功"), DELETE_FAILED(500, "删除失败");
 
-	private final int status;
+	private final int code;
 
 	private final String message;
 
-	MessageStatus(final int status, final String message) {
-		this.status = status;
+	MessageStatus(final int code, final String message) {
+		this.code = code;
 		this.message = message;
 	}
 
 	@Override
-	public int getStatus() {
-		return status;
+	public int getCode() {
+		return code;
 	}
 
 	@Override

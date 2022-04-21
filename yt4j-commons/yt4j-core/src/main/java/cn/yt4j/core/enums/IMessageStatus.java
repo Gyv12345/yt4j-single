@@ -19,7 +19,7 @@ public interface IMessageStatus {
 	 * 返回code
 	 * @return
 	 */
-	int getStatus();
+	int getCode();
 
 	/**
 	 * 返回信息

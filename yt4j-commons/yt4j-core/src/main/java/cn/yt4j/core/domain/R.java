@@ -34,7 +34,7 @@ public class R<T> implements Serializable {
 	private static final long serialVersionUID = -6101337183914807339L;
 
 	@ApiModelProperty("编码")
-	private int status;
+	private int code;
 
 	@ApiModelProperty("返回信息")
 	private String message;
@@ -89,12 +89,12 @@ public class R<T> implements Serializable {
 	}
 
 	public static <T> R<T> result(T result, IMessageStatus status) {
-		return result(result, status.getStatus(), status.getMessage());
+		return result(result, status.getCode(), status.getMessage());
 	}
 
-	private static <T> R<T> result(T result, int status, String message) {
+	private static <T> R<T> result(T result, int code, String message) {
 		R<T> apiResult = new R<>();
-		apiResult.setStatus(status);
+		apiResult.setCode(code);
 		apiResult.setResult(result);
 		apiResult.setMessage(message);
 		return apiResult;

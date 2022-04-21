@@ -22,7 +22,6 @@ import javax.servlet.http.HttpServletRequest;
  *
  * @author gyv12345@163.com
  */
-@Deprecated
 public class PageUtil {
 
 	private static final String PAGE_SIZE = "pageSize";

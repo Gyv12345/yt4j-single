@@ -10,9 +10,9 @@
 
 package cn.yt4j.sys.service.impl;
 
+import cn.dev33.satoken.stp.StpUtil;
 import cn.yt4j.core.constant.SysConstants;
 import cn.yt4j.core.util.TreeUtil;
-import cn.yt4j.security.util.SecurityUtil;
 import cn.yt4j.sys.dao.SysMenuDao;
 import cn.yt4j.sys.entity.SysMenu;
 import cn.yt4j.sys.entity.vo.MenuTreeVO;
@@ -75,7 +75,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuDao, SysMenu> impleme
 
 	@Override
 	public List<TopMenuVO> topMenu() {
-		return this.baseMapper.listTopMenu(SecurityUtil.getUser().getId()).stream().map(sysMenu -> {
+		return this.baseMapper.listTopMenu(StpUtil.getLoginIdAsLong()).stream().map(sysMenu -> {
 			TopMenuVO vo = new TopMenuVO();
 			vo.setTitle(sysMenu.getTitle());
 			vo.setId(sysMenu.getId());

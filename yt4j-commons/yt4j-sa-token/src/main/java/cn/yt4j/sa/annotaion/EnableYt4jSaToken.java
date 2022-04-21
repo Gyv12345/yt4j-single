@@ -8,21 +8,21 @@
  *    See the Mulan PSL v2 for more details.
  */
 
-package cn.yt4j.sys;
+package cn.yt4j.sa.annotaion;
 
-import cn.yt4j.sa.annotaion.EnableYt4jSaToken;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import cn.yt4j.sa.SaAutoConfiguration;
+import org.springframework.context.annotation.Import;
+
+import java.lang.annotation.*;
 
 /**
  * @author gyv12345@163.com
  */
-@EnableYt4jSaToken
-@SpringBootApplication
-public class SysApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(SysApplication.class, args);
-	}
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Inherited
+@Import(SaAutoConfiguration.class)
+public @interface EnableYt4jSaToken {
 
 }

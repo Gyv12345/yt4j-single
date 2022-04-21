@@ -30,7 +30,6 @@ import java.util.List;
 /**
  * 部门(SysDept)表控制层
  *
- * @param sysDeptService 服务对象
  * @author gyv12345@163.com
  * @since 2020-08-10 08:43:51
  */
@@ -39,7 +38,9 @@ import java.util.List;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/dept")
-public record SysDeptController(SysDeptService sysDeptService) {
+public class SysDeptController {
+
+	private final SysDeptService sysDeptService;
 
 	/**
 	 * 机构树

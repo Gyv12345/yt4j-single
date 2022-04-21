@@ -8,21 +8,20 @@
  *    See the Mulan PSL v2 for more details.
  */
 
-package cn.yt4j.sys;
+package cn.yt4j.sa;
 
-import cn.yt4j.sa.annotaion.EnableYt4jSaToken;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import cn.yt4j.sa.property.SaIgnoredUrlProperty;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * @author gyv12345@163.com
  */
-@EnableYt4jSaToken
-@SpringBootApplication
-public class SysApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(SysApplication.class, args);
-	}
-
+@Configuration
+@ComponentScan("cn.yt4j.sa")
+@EnableAutoConfiguration
+@EnableConfigurationProperties({SaIgnoredUrlProperty.class})
+public class SaAutoConfiguration {
 }

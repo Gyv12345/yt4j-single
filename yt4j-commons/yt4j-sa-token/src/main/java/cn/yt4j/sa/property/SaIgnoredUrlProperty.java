@@ -8,25 +8,26 @@
  *    See the Mulan PSL v2 for more details.
  */
 
-package cn.yt4j.sys.entity.dto;
+package cn.yt4j.sa.property;
 
 import lombok.Data;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
 
-import javax.validation.constraints.NotNull;
-import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author gyv12345@163.com
  */
+@Component
 @Data
-public class UserDTO implements Serializable {
+@ConfigurationProperties(prefix = "yt4j.sa")
+public class SaIgnoredUrlProperty {
 
-	private static final long serialVersionUID = 7380450222422017042L;
-
-	@NotNull
-	private String username;
-
-	@NotNull
-	private String password;
+	/**
+	 * exclude url
+	 */
+	private List<String> ignoredUrl = new ArrayList<>();
 
 }

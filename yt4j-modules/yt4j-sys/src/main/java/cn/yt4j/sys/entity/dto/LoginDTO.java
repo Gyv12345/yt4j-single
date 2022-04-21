@@ -8,21 +8,25 @@
  *    See the Mulan PSL v2 for more details.
  */
 
-package cn.yt4j.sys;
+package cn.yt4j.sys.entity.dto;
 
-import cn.yt4j.sa.annotaion.EnableYt4jSaToken;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import lombok.Data;
+
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 /**
  * @author gyv12345@163.com
  */
-@EnableYt4jSaToken
-@SpringBootApplication
-public class SysApplication {
+@Data
+public class LoginDTO implements Serializable {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SysApplication.class, args);
-	}
+	private static final long serialVersionUID = 7380450222422017042L;
+
+	@NotNull
+	private String username;
+
+	@NotNull
+	private String password;
 
 }

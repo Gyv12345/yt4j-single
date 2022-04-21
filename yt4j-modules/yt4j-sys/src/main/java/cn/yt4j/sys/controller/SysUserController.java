@@ -10,14 +10,15 @@
 
 package cn.yt4j.sys.controller;
 
+import cn.dev33.satoken.stp.StpUtil;
+import cn.hutool.core.convert.Convert;
 import cn.yt4j.core.domain.PageRequest;
 import cn.yt4j.core.domain.PageResult;
 import cn.yt4j.core.domain.R;
 import cn.yt4j.log.annotation.SysLog;
-import cn.yt4j.security.util.SecurityUtil;
 import cn.yt4j.sys.entity.SysUser;
+import cn.yt4j.sys.entity.dto.LoginDTO;
 import cn.yt4j.sys.entity.dto.PasswordDTO;
-import cn.yt4j.sys.entity.dto.UserDTO;
 import cn.yt4j.sys.entity.vo.UserInfo;
 import cn.yt4j.sys.service.SysUserService;
 import io.swagger.annotations.Api;
@@ -47,7 +48,7 @@ public class SysUserController {
 	@SysLog("登录")
 	@ApiOperation("登录")
 	@PostMapping("login")
-	public R<String> login(@RequestBody @Valid UserDTO dto) {
+	public R<String> login(@RequestBody @Valid LoginDTO dto) {
 		return R.ok(this.sysUserService.login(dto), "登录成功");
 	}
 
@@ -68,7 +69,7 @@ public class SysUserController {
 	@ApiOperation("获取用户信息")
 	@GetMapping("info")
 	public R<UserInfo> getInfo() {
-		return R.ok(this.sysUserService.getInfo(SecurityUtil.getUser().getId()));
+		return R.ok(this.sysUserService.getInfo(Convert.toLong(StpUtil.getLoginId())));
 	}
 
 	/**

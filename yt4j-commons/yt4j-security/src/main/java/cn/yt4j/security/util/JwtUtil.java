@@ -29,7 +29,9 @@ import java.util.Date;
 @RequiredArgsConstructor
 @Component
 @Slf4j
-public record JwtUtil(JwtPayloadProperty jwtPayloadProperty) {
+public class JwtUtil {
+
+	private final JwtPayloadProperty jwtPayloadProperty;
 
 	/**
 	 * 从令牌中获取数据声明

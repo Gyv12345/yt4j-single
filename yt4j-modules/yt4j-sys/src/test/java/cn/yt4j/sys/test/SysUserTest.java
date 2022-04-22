@@ -10,10 +10,8 @@
 
 package cn.yt4j.sys.test;
 
-import cn.hutool.crypto.asymmetric.KeyType;
-import cn.hutool.crypto.asymmetric.RSA;
 import cn.yt4j.sys.entity.SysUser;
-import cn.yt4j.sys.entity.dto.UserDTO;
+import cn.yt4j.sys.entity.dto.LoginDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +21,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 @SpringBootTest
@@ -38,7 +36,7 @@ public class SysUserTest {
 
 	@Test
 	public void login() throws Exception {
-		UserDTO dto = new UserDTO();
+		LoginDTO dto = new LoginDTO();
 		dto.setUsername("admin");
 		dto.setPassword("123456");
 		MvcResult result = mvc

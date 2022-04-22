@@ -12,6 +12,7 @@ package cn.yt4j.core.domain;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import lombok.Data;
+import lombok.ToString;
 
 import java.io.Serializable;
 import java.util.List;
@@ -21,6 +22,7 @@ import java.util.List;
  * @param <T>
  */
 @Data
+@ToString
 public class PageResult<T> implements Serializable {
 
 	private static final long serialVersionUID = 983447747149487589L;

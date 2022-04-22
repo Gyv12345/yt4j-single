@@ -138,6 +138,13 @@
                 <artifactId>sa-token-dao-redis-jackson</artifactId>
                 <version>${sa-token.version}</version>
             </dependency>
+            <!-- Sa-Token整合SpringAOP实现注解鉴权 -->
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-spring-aop</artifactId>
+                <version>${sa-token.version}</version>
+            </dependency>
+
 
             <!-- 2方库 -->
             <dependency>

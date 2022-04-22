@@ -10,6 +10,7 @@
 
 package cn.yt4j.sys.controller;
 
+import cn.dev33.satoken.annotation.SaCheckRole;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.hutool.core.convert.Convert;
 import cn.yt4j.core.domain.PageRequest;
@@ -59,6 +60,7 @@ public class SysUserController {
 		return R.ok("退出成功");
 	}
 
+
 	@ApiOperation("修改密码")
 	@PostMapping("update/password")
 	public R<Boolean> updatePassword(@RequestBody @Valid PasswordDTO dto) {
@@ -77,6 +79,7 @@ public class SysUserController {
 	 * @param request 查询实体
 	 * @return 所有数据
 	 */
+	@SaCheckRole("super-admin")
 	@ApiOperation("列表 ")
 	@PostMapping("page")
 	public R<PageResult<SysUser>> listPage(@Valid @RequestBody PageRequest<SysUser> request) {

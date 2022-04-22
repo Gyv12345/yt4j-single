@@ -10,7 +10,6 @@
 
 package cn.yt4j.sa.config;
 
-import cn.dev33.satoken.interceptor.SaAnnotationInterceptor;
 import cn.dev33.satoken.interceptor.SaRouteInterceptor;
 import cn.yt4j.sa.property.SaIgnoredUrlProperty;
 import lombok.RequiredArgsConstructor;
@@ -31,8 +30,6 @@ public class SaTokenWebConfig implements WebMvcConfigurer {
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new SaRouteInterceptor()).addPathPatterns("/**")
 				.excludePathPatterns(saIgnoredUrlProperty.getIgnoredUrl());
-		// 注册注解拦截器，并排除不需要注解鉴权的接口地址 (与登录拦截器无关)
-		registry.addInterceptor(new SaAnnotationInterceptor()).addPathPatterns("/**");
 	}
 
 }

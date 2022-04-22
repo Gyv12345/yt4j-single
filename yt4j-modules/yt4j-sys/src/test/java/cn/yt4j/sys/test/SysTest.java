@@ -10,8 +10,7 @@
 
 package cn.yt4j.sys.test;
 
-import cn.hutool.crypto.asymmetric.KeyType;
-import cn.hutool.crypto.asymmetric.RSA;
+import cn.dev33.satoken.secure.SaSecureUtil;
 import org.jasypt.encryption.StringEncryptor;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -22,13 +21,10 @@ import org.springframework.expression.Expression;
 import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootTest
 public class SysTest {
 
-	@Autowired
-	private PasswordEncoder encoder;
 
 	@Autowired
 	StringEncryptor stringEncryptor;
@@ -59,7 +55,7 @@ public class SysTest {
 	 */
 	@Test
 	public void password() {
-		System.out.println(encoder.encode(""));
+		System.out.println(SaSecureUtil.md5(""));
 	}
 
 	/**

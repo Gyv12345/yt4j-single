@@ -17,6 +17,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.Data;
+import lombok.ToString;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -26,6 +27,7 @@ import java.util.Map;
  * @author gyv12345@163.com
  */
 @Data
+@ToString
 public class PageRequest<T> implements Serializable {
 
 	private static final long serialVersionUID = -2788877367261112273L;

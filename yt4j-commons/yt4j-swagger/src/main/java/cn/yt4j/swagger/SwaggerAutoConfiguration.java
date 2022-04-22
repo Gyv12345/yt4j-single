@@ -33,7 +33,7 @@ import java.util.List;
  * @author gyv12345@163.com
  */
 @EnableSwagger2
-@ConditionalOnProperty(name = "yt4j.swagger.enabled")
+@ConditionalOnProperty(name = "yt4j.swagger.enabled",havingValue = "true")
 public class SwaggerAutoConfiguration {
 
 	@Bean

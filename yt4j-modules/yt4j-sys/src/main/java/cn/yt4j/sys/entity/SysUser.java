@@ -84,10 +84,5 @@ public class SysUser extends Model<SysUser> {
 	@TableField(exist = false)
 	private List<Long> roleIds;
 
-	@TableField(exist = false)
-	private List<String> roles;
-
-	@TableField(exist = false)
-	private List<String> permissions;
 
 }

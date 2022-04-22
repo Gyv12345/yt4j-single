@@ -16,6 +16,8 @@ import cn.dev33.satoken.stp.StpUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.yt4j.core.enums.MessageStatus;
 import cn.yt4j.core.exception.Yt4jException;
+import cn.yt4j.sa.constant.SaConstants;
+import cn.yt4j.sa.domain.SaUserCache;
 import cn.yt4j.sys.dao.SysMenuDao;
 import cn.yt4j.sys.dao.SysRoleDao;
 import cn.yt4j.sys.dao.SysUserDao;
@@ -68,15 +70,18 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
 			throw new Yt4jException(MessageStatus.LOGIN_FAILED);
 		}
 		else {
-			// 通过密码编码器比较密码
+			// 密码比较，一直
 			if (ObjectUtil.equals(SaSecureUtil.md5(dto.getPassword()), user.getPassword())) {
 				StpUtil.login(user.getId());
-				// 登录成功，创建token，我们需要在这里返回userDetail内容，包含权限信息,并将其放入redis，通过redis跨项目共享
 				String token = StpUtil.getTokenValue();
 				SaSession session = StpUtil.getTokenSession();
-				user.setRoles(this.sysRoleDao.listByUserId(user.getId()));
-				user.setPermissions(this.sysMenuDao.listByUserId(user.getId()));
-				session.set("user", user);
+				SaUserCache userCache=new SaUserCache();
+				userCache.setId(user.getId());
+				userCache.setUsername(user.getUsername());
+				userCache.setRealName(user.getNickName());
+				userCache.setRoles(this.sysRoleDao.listByUserId(user.getId()));
+				userCache.setPermissions(this.sysMenuDao.listByUserId(user.getId()));
+				session.set(SaConstants.SA_USER_PREFIX, userCache);
 				return token;
 			}
 			else {

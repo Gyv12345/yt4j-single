@@ -132,22 +132,12 @@
                 <artifactId>sa-token-jwt</artifactId>
                 <version>${sa-token.version}</version>
             </dependency>
-            <!-- Sa-Token 整合 Redis （使用jdk默认序列化方式） -->
-            <dependency>
-                <groupId>cn.dev33</groupId>
-                <artifactId>sa-token-dao-redis</artifactId>
-                <version>${sa-token.version}</version>
-            </dependency>
             <!-- Sa-Token 整合 Redis （使用jackson序列化方式） -->
             <dependency>
                 <groupId>cn.dev33</groupId>
                 <artifactId>sa-token-dao-redis-jackson</artifactId>
                 <version>${sa-token.version}</version>
             </dependency>
-
-
-
-
 
             <!-- 2方库 -->
             <dependency>

@@ -20,7 +20,6 @@
         <module>yt4j-dependencies</module>
         <module>yt4j-modules</module>
         <module>yt4j-commons</module>
-        <module>yt4j-commons/yt4j-sa-token</module>
     </modules>
     <packaging>pom</packaging>
     <properties>

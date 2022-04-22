@@ -44,7 +44,6 @@ public class SysDeptController {
 
 	/**
 	 * 机构树
-	 *
 	 * @return
 	 */
 	@SysLog("获取部门机构树")
@@ -56,7 +55,6 @@ public class SysDeptController {
 
 	/**
 	 * 分页查询所有数据d
-	 *
 	 * @param request 查询实体
 	 * @return 所有数据
 	 */
@@ -69,7 +67,6 @@ public class SysDeptController {
 
 	/**
 	 * 通过主键查询单条数据
-	 *
 	 * @param id 主键
 	 * @return 单条数据
 	 */
@@ -81,7 +78,6 @@ public class SysDeptController {
 
 	/**
 	 * 新增数据
-	 *
 	 * @param sysDept 实体对象
 	 * @return 新增结果
 	 */
@@ -93,7 +89,6 @@ public class SysDeptController {
 
 	/**
 	 * 修改数据
-	 *
 	 * @param sysDept 实体对象
 	 * @return 修改结果
 	 */
@@ -105,7 +100,6 @@ public class SysDeptController {
 
 	/**
 	 * 删除数据
-	 *
 	 * @param id 主键结合
 	 * @return 删除结果
 	 */

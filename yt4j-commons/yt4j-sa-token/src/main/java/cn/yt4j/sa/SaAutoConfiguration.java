@@ -22,6 +22,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan("cn.yt4j.sa")
 @EnableAutoConfiguration
-@EnableConfigurationProperties({SaIgnoredUrlProperty.class})
+@EnableConfigurationProperties({ SaIgnoredUrlProperty.class })
 public class SaAutoConfiguration {
+
 }

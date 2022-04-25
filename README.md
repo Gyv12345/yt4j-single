@@ -18,7 +18,7 @@ ui部分前端还在开发
 依赖 | 版本
 ---|---
 Spring Boot | 2.6.x
-Mybatis Plus | 3.4.x
+Mybatis Plus | 3.5.x
 hutool | 5.7.x
 knife4j |  3.0.3
 

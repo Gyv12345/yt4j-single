@@ -192,6 +192,18 @@
                 <artifactId>yt4j-sa-token</artifactId>
                 <version>${project.version}</version>
             </dependency>
+
+            <!-- 应用 -->
+            <dependency>
+                <groupId>cn.yt4j</groupId>
+                <artifactId>yt4j-sys</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.yt4j</groupId>
+                <artifactId>yt4j-crm</artifactId>
+                <version>${project.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>

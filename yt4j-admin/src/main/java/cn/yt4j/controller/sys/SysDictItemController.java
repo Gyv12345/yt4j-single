@@ -8,15 +8,13 @@
  *    See the Mulan PSL v2 for more details.
  */
 
-package cn.yt4j.sys.controller;
+package cn.yt4j.controller.sys;
 
 import cn.yt4j.core.domain.PageRequest;
 import cn.yt4j.core.domain.PageResult;
 import cn.yt4j.core.domain.R;
-import cn.yt4j.sys.entity.SysRole;
-import cn.yt4j.sys.entity.dto.RoleMenuDTO;
-import cn.yt4j.sys.entity.vo.DictVO;
-import cn.yt4j.sys.service.SysRoleService;
+import cn.yt4j.sys.entity.SysDictItem;
+import cn.yt4j.sys.service.SysDictItemService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -27,39 +25,21 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * 角色(SysRole)表控制层
+ * (SysDictItem)表控制层
  *
  * @author gyv12345@163.com
- * @since 2020-08-10 08:43:34
+ * @since 2020-09-10 10:29:08
  */
-@Api(tags = " 角色")
+@Api(tags = "字典项")
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/role")
-public class SysRoleController {
+@RequestMapping("/dict/item")
+public class SysDictItemController {
 
 	/**
 	 * 服务对象
 	 */
-	private final SysRoleService sysRoleService;
-
-	@ApiOperation("获取角色权限")
-	@GetMapping("get/menus/{id}")
-	public R<List<Long>> getMenuIds(@PathVariable Long id) {
-		return R.ok(this.sysRoleService.listMenuIds(id));
-	}
-
-	@ApiOperation("角色下拉菜单")
-	@GetMapping("select")
-	public R<List<DictVO>> dropDown() {
-		return R.ok(this.sysRoleService.dropDown());
-	}
-
-	@ApiOperation("设置权限")
-	@PostMapping("setting")
-	public R<Boolean> setting(@RequestBody RoleMenuDTO dto) {
-		return R.ok(this.sysRoleService.setting(dto));
-	}
+	private final SysDictItemService sysDictItemService;
 
 	/**
 	 * 分页查询所有数据
@@ -68,8 +48,8 @@ public class SysRoleController {
 	 */
 	@ApiOperation("分页查询")
 	@PostMapping("page")
-	public R<PageResult<SysRole>> listPage(@Valid @RequestBody PageRequest<SysRole> request) {
-		return R.ok(this.sysRoleService.page(request.page(), request.wrapper()));
+	public R<PageResult<SysDictItem>> listPage(@Valid @RequestBody PageRequest<SysDictItem> request) {
+		return R.ok(this.sysDictItemService.page(request.page(), request.wrapper()));
 	}
 
 	/**
@@ -78,42 +58,48 @@ public class SysRoleController {
 	 * @return 单条数据
 	 */
 	@ApiOperation("获取单个")
-	@GetMapping("get/{id}")
-	public R<SysRole> selectOne(@PathVariable Serializable id) {
-		return R.ok(this.sysRoleService.getById(id));
+	@GetMapping("{id}")
+	public R selectOne(@PathVariable Serializable id) {
+		return R.ok(this.sysDictItemService.getById(id));
 	}
 
 	/**
 	 * 新增数据
-	 * @param sysRole 实体对象
+	 * @param sysDictItem 实体对象
 	 * @return 新增结果
 	 */
 	@ApiOperation("添加")
-	@PostMapping("insert")
-	public R insert(@RequestBody SysRole sysRole) {
-		return R.ok(this.sysRoleService.save(sysRole));
+	@PostMapping
+	public R insert(@RequestBody SysDictItem sysDictItem) {
+		return R.ok(this.sysDictItemService.save(sysDictItem));
+	}
+
+	@ApiOperation("批量添加")
+	@PostMapping("batch/insert")
+	public R<Boolean> batchInsert(@RequestBody List<SysDictItem> list) {
+		return R.ok(this.sysDictItemService.saveBatch(list));
 	}
 
 	/**
 	 * 修改数据
-	 * @param sysRole 实体对象
+	 * @param sysDictItem 实体对象
 	 * @return 修改结果
 	 */
 	@ApiOperation("修改")
-	@PutMapping("update")
-	public R update(@RequestBody SysRole sysRole) {
-		return R.ok(this.sysRoleService.updateById(sysRole));
+	@PutMapping
+	public R update(@RequestBody SysDictItem sysDictItem) {
+		return R.ok(this.sysDictItemService.updateById(sysDictItem));
 	}
 
 	/**
 	 * 删除数据
-	 * @param id 主键结合
+	 * @param id 主键
 	 * @return 删除结果
 	 */
 	@ApiOperation("删除")
 	@DeleteMapping("delete/{id}")
 	public R delete(@PathVariable Long id) {
-		return R.ok(this.sysRoleService.removeById(id));
+		return R.ok(this.sysDictItemService.removeById(id));
 	}
 
 }

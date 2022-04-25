@@ -8,7 +8,7 @@
  *    See the Mulan PSL v2 for more details.
  */
 
-package cn.yt4j.sys.controller;
+package cn.yt4j.controller.sys;
 
 import cn.dev33.satoken.stp.StpUtil;
 import cn.yt4j.core.domain.PageRequest;

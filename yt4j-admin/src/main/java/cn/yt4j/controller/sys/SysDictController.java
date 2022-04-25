@@ -8,61 +8,63 @@
  *    See the Mulan PSL v2 for more details.
  */
 
-package cn.yt4j.sys.controller;
+package cn.yt4j.controller.sys;
 
-import cn.yt4j.core.domain.BaseTree;
 import cn.yt4j.core.domain.PageRequest;
 import cn.yt4j.core.domain.PageResult;
 import cn.yt4j.core.domain.R;
 import cn.yt4j.log.annotation.SysLog;
-import cn.yt4j.sys.entity.SysDept;
-import cn.yt4j.sys.service.SysDeptService;
+import cn.yt4j.sys.entity.SysDict;
+import cn.yt4j.sys.entity.vo.DictVO;
+import cn.yt4j.sys.service.SysDictService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.io.Serializable;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
- * 部门(SysDept)表控制层
+ * 字典(SysDict)表控制层
  *
  * @author gyv12345@163.com
- * @since 2020-08-10 08:43:51
+ * @since 2020-08-10 08:43:32
  */
-@Api(tags = " 部门")
-@Slf4j
-@RequiredArgsConstructor
+@Api(tags = "字典")
 @RestController
-@RequestMapping("/dept")
-public class SysDeptController {
-
-	private final SysDeptService sysDeptService;
+@RequestMapping("/dict")
+@RequiredArgsConstructor
+public class SysDictController {
 
 	/**
-	 * 机构树
-	 * @return
+	 * 服务对象
 	 */
-	@SysLog("获取部门机构树")
-	@ApiOperation("机构树")
-	@GetMapping("tree")
-	public R<List<BaseTree>> treeDept() {
-		return R.ok(this.sysDeptService.treeDept());
+	private final SysDictService sysDictService;
+
+	@SysLog("获取远程字典")
+	@ApiOperation("远程字典")
+	@GetMapping("remote/{code}")
+	public R<List<DictVO>> listByCode(@PathVariable String code) {
+		return R.ok(this.sysDictService.listByCode(code).stream().map(sysDictItem -> {
+			DictVO vo = new DictVO();
+			vo.setLabel(sysDictItem.getLabel());
+			vo.setValue(sysDictItem.getValue());
+			return vo;
+		}).collect(Collectors.toList()));
 	}
 
 	/**
-	 * 分页查询所有数据d
-	 * @param request 查询实体
-	 * @return 所有数据
+	 * 分页查询
+	 * @param request
+	 * @return
 	 */
-	@SysLog("部门分页查询")
 	@ApiOperation("分页查询")
 	@PostMapping("page")
-	public R<PageResult<SysDept>> listPage(@Valid @RequestBody PageRequest<SysDept> request) {
-		return R.ok(this.sysDeptService.page(request.page(), request.wrapper()));
+	public R<PageResult<SysDict>> listPage(@Valid @RequestBody PageRequest<SysDict> request) {
+		return R.ok(this.sysDictService.page(request.page(), request.wrapper()));
 	}
 
 	/**
@@ -71,31 +73,31 @@ public class SysDeptController {
 	 * @return 单条数据
 	 */
 	@ApiOperation("获取单个")
-	@GetMapping("get/{id}")
-	public R<SysDept> selectOne(@PathVariable Serializable id) {
-		return R.ok(this.sysDeptService.getById(id));
+	@GetMapping("{id}")
+	public R<SysDict> one(@PathVariable Serializable id) {
+		return R.ok(this.sysDictService.getById(id));
 	}
 
 	/**
 	 * 新增数据
-	 * @param sysDept 实体对象
+	 * @param sysDict 实体对象
 	 * @return 新增结果
 	 */
 	@ApiOperation("添加")
 	@PostMapping("insert")
-	public R insert(@RequestBody SysDept sysDept) {
-		return R.ok(this.sysDeptService.save(sysDept));
+	public R insert(@RequestBody SysDict sysDict) {
+		return R.ok(this.sysDictService.save(sysDict));
 	}
 
 	/**
 	 * 修改数据
-	 * @param sysDept 实体对象
+	 * @param sysDict 实体对象
 	 * @return 修改结果
 	 */
 	@ApiOperation("修改")
 	@PutMapping("update")
-	public R update(@RequestBody SysDept sysDept) {
-		return R.ok(this.sysDeptService.updateById(sysDept));
+	public R update(@RequestBody SysDict sysDict) {
+		return R.ok(this.sysDictService.updateById(sysDict));
 	}
 
 	/**
@@ -106,7 +108,7 @@ public class SysDeptController {
 	@ApiOperation("删除")
 	@DeleteMapping("delete/{id}")
 	public R delete(@PathVariable Long id) {
-		return R.ok(this.sysDeptService.removeById(id));
+		return R.ok(this.sysDictService.removeById(id));
 	}
 
 }

@@ -8,28 +8,19 @@
  *    See the Mulan PSL v2 for more details.
  */
 
-package cn.yt4j.data.interceptor;
+package cn.yt4j;
 
-import com.baomidou.mybatisplus.extension.plugins.inner.InnerInterceptor;
-import org.apache.ibatis.executor.Executor;
-import org.apache.ibatis.mapping.MappedStatement;
+import cn.yt4j.sa.annotaion.EnableYt4jSaToken;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * 预览过滤器
- *
  * @author gyv12345@163.com
  */
-public class PreviewInterceptor implements InnerInterceptor {
-
-	private Boolean preview;
-
-	public PreviewInterceptor(Boolean preview) {
-		this.preview = preview;
-	}
-
-	@Override
-	public boolean willDoUpdate(Executor executor, MappedStatement ms, Object parameter) {
-		return this.preview;
-	}
-
+@EnableYt4jSaToken
+@SpringBootApplication
+public class AdminApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(AdminApplication.class,args);
+    }
 }

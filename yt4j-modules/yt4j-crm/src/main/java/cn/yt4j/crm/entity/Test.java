@@ -8,21 +8,9 @@
  *    See the Mulan PSL v2 for more details.
  */
 
-package cn.yt4j.sys;
+package cn.yt4j.crm.entity;
 
-import cn.yt4j.sa.annotaion.EnableYt4jSaToken;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+public class Test {
 
-/**
- * @author gyv12345@163.com
- */
-@EnableYt4jSaToken
-@SpringBootApplication
-public class SysApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(SysApplication.class, args);
-	}
-
+    private String name;
 }

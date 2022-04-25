@@ -20,6 +20,8 @@
         <module>yt4j-dependencies</module>
         <module>yt4j-modules</module>
         <module>yt4j-commons</module>
+        <module>yt4j-admin</module>
+        <module>yt4j-modules/yt4j-crm</module>
     </modules>
     <packaging>pom</packaging>
     <properties>

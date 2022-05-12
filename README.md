@@ -33,6 +33,7 @@ yt4j
 │  ├─yt4j-job xxl-job
 │  ├─yt4j-log 统一日志
 │  ├─yt4j-security 安全相关
+│  ├─yt4j-sa-token 安全相关 不想用spring security了 进行了替换
 │  ├─yt4j-swagger 引入了军刀
 │  └─yt4j-web web定义相关
 ├─yt4j-dependencies 依赖管理
